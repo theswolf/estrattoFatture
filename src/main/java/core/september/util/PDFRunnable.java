@@ -39,6 +39,7 @@ public class PDFRunnable implements Runnable{
         data = new String[chunks.size()][];
         chunks
                 .stream()
+                .sorted(Comparator.comparing(PDFData::getCliente))
                 .sorted(Comparator.comparing(PDFData::getDate))
                 .forEach(ch -> {
             data[counter.getAndIncrement()] = ch.toArray();
