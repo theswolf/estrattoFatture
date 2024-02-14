@@ -106,6 +106,16 @@ public class PDFRunnable implements Runnable{
                                     e.printStackTrace();
                                 }
                             }
+                            if(s.startsWith("1 IT") && importo.get() == null) {
+                                try {
+                                    importo.set(NumberFormat.getNumberInstance(Locale.ITALIAN).parse(s.split(" ")[6]));
+                                    if(totale.get() == null) {
+                                        totale.set(importo.get());
+                                    }
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         });
 
                         PDFData pdfData = new PDFData(totale.get().doubleValue(),
